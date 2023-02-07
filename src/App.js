@@ -4,35 +4,44 @@ import Todolist from "./components/Todolist";
 import { useState } from "react";
 
 function App() {
-  const [lists, setLists] = useState([])
 
-  function deleteList(todoList){
-    console.log("id",todoList)
-    const updateTodos = lists.filter((list)=> list.todoList !== todoList)
-    setLists(updateTodos)
-  }
+
 
   const todoLists = [
     {
-      title: 'clean house'
+      title: 'clean house',
+      id: "1"
     },
     {
-      title: 'sitdown'
+      title: 'sitdown',
+      id: "2"
     },
     {
-      title: 'work'
+      title: 'work',
+      id: "3"
     },
     {
-      title: 'sleep'
+      title: 'sleep',
+      id: "4"
     },
     {
-      title: 'walk'
+      title: 'walk',
+      id: "5"
     }
   ]
 
-  const todoListElement = todoLists.map((todoList,index) => {
-    return <Todolist todoList={todoList} key={index} deleteList={deleteList}/>
+  const [lists, setLists] = useState(todoLists)
+
+  const todoListElement = lists.map((todoList,index) => {
+    return <Todolist  todoList={todoList} key={index} deleteList={deleteList}/>
   })
+
+    function deleteList(todoListId){
+    console.log("todoListId",todoListId)
+    const updateTodos = lists.filter((list)=> list.id !== todoListId.id)
+    setLists(updateTodos)
+    console.log(updateTodos)
+  }
   
   return (
     <div className="App">

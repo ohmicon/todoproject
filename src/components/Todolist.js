@@ -5,7 +5,7 @@ import React from "react";
 
 function Todolist(props) {
 
-  const { todoList, deleteList } = props;
+  const { todoList, deleteList} = props;
   return (
     <div>
       <div className="Todo-list">
